@@ -466,7 +466,7 @@ class Shoes
               gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
               gsub(/([a-z\d])([A-Z])/,'\1_\2').downcase
       @types[methc] = subc
-      Shoes.class_eval %{
+      Shoes::App.class_eval %{
         def #{methc}(*a, &b)
           a.unshift Widget.instance_variable_get("@types")[#{methc.dump}]
           widget(*a, &b)
