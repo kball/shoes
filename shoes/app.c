@@ -90,6 +90,7 @@ shoes_app_clear(shoes_app *app)
 int
 shoes_app_remove(shoes_app *app)
 {
+  shoes_canvas_send_onclose(app->canvas);
   shoes_app_clear(app);
   rb_ary_delete(shoes_world->apps, app->self);
   return (RARRAY_LEN(shoes_world->apps) == 0);

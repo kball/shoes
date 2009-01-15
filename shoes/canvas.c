@@ -1711,6 +1711,7 @@ EVENT_HANDLER(leave);
 EVENT_HANDLER(release);
 EVENT_HANDLER(motion);
 EVENT_HANDLER(keypress);
+EVENT_HANDLER(onclose);
 EVENT_HANDLER(start);
 EVENT_HANDLER(finish);
 
@@ -2007,6 +2008,20 @@ shoes_canvas_send_keypress(VALUE self, VALUE key)
         shoes_canvas_send_keypress(ele, key);
       }
     }
+  }
+}
+
+void
+shoes_canvas_send_onclose(VALUE self)
+{
+  shoes_canvas *self_t;
+  Data_Get_Struct(self, shoes_canvas, self_t);
+  VALUE onclose = ATTR(self_t->attr, onclose);
+  if (!NIL_P(onclose))
+  {
+    // NOTE[kball]: It seems like we should pass back self here, but I'm
+    // not 100% confident it will be useful
+    shoes_safe_block(self, onclose, rb_ary_new3(1, self));
   }
 }
 

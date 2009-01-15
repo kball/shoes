@@ -466,6 +466,7 @@ VALUE shoes_canvas_click(int, VALUE *, VALUE);
 VALUE shoes_canvas_release(int, VALUE *, VALUE);
 VALUE shoes_canvas_motion(int, VALUE *, VALUE);
 VALUE shoes_canvas_keypress(int, VALUE *, VALUE);
+VALUE shoes_canvas_onclose(int, VALUE *, VALUE);
 int shoes_canvas_independent(shoes_canvas *);
 VALUE shoes_find_canvas(VALUE);
 VALUE shoes_canvas_get_app(VALUE);
